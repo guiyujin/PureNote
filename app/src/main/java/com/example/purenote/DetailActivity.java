@@ -3,6 +3,7 @@ package com.example.purenote;
 import androidx.appcompat.app.AppCompatActivity;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         del = findViewById(R.id.delete);
         back = findViewById(R.id.back);
         tv = findViewById(R.id.d_text);
+        tv.setMovementMethod(ScrollingMovementMethod.getInstance());
         back.setOnClickListener(this);
         del.setOnClickListener(this);
         tv.setText(getIntent().getStringExtra(NotesDB.CONTENT));

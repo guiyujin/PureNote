@@ -12,7 +12,7 @@ import java.util.Date;
 
 public class AddContent extends AppCompatActivity implements View.OnClickListener {
     private Button save,del;
-    private EditText ettext;
+    private EditText et_text;
     private NotesDB notesDB;
     private SQLiteDatabase dbWriter;
 
@@ -23,7 +23,7 @@ public class AddContent extends AppCompatActivity implements View.OnClickListene
 
         save = findViewById(R.id.save);
         del = findViewById(R.id.cancel);
-        ettext = findViewById(R.id.et_text);
+        et_text = findViewById(R.id.et_text);
         save.setOnClickListener(this);
         del.setOnClickListener(this);
         notesDB = new NotesDB(this);
@@ -47,7 +47,7 @@ public class AddContent extends AppCompatActivity implements View.OnClickListene
 
     public void addDB()  {
         ContentValues cv = new ContentValues();
-        cv.put(NotesDB.CONTENT,ettext.getText().toString());
+        cv.put(NotesDB.CONTENT, et_text.getText().toString());
         cv.put(NotesDB.TIME,getTime());
         dbWriter.insert(NotesDB.TABLE_NAME, null, cv);
     }
