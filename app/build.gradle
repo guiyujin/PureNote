@@ -6,7 +6,7 @@ android {
     compileSdkVersion 29
 
     defaultConfig {
-        applicationId "com.example.cleannote"
+        applicationId "com.example.purenote"
         minSdkVersion 23
         targetSdkVersion 29
         versionCode 1

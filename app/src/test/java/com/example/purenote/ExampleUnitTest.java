@@ -1,4 +1,4 @@
-package com.example.cleannote;
+package com.example.purenote;
 
 import org.junit.Test;
 

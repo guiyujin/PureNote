@@ -1,4 +1,4 @@
-package com.example.cleannote;
+package com.example.purenote;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.database.sqlite.SQLiteDatabase;

@@ -1,4 +1,4 @@
-package com.example.cleannote;
+package com.example.purenote;
 
 import android.content.Context;
 import android.database.Cursor;
