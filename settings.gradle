@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "CleanNote"
+rootProject.name = "PureNote"
