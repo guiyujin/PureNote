@@ -9,7 +9,6 @@
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         >
     </ListView>
 
@@ -20,7 +19,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_margin="30dp"
-        app:fabSize="normal"
+        app:fabSize="mini"
         android:clickable="true"
         android:focusable="true"
         android:backgroundTint="@color/add"
