@@ -58,5 +58,4 @@ public class AddContent extends AppCompatActivity implements View.OnClickListene
         String str = format.format(curDate);
         return str;
     }
-
 }

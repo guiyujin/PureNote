@@ -1,6 +1,13 @@
 <?xml version="1.1" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar" />
+    <style name="AppTheme1" parent="Theme.AppCompat.DayNight.NoActionBar" />
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 
     <style name="btnStyle">
         <item name="android:layout_width">wrap_content</item>
@@ -11,4 +18,7 @@
         <item name="android:layout_marginBottom">5dp</item>
         <item name="android:background">@drawable/fillet_btn</item>
     </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 </resources>
