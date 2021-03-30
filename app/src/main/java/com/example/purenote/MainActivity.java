@@ -38,9 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void initView(){
         lv = findViewById(R.id.list);
         fab = findViewById(R.id.add);
-        mtoolbar = findViewById(R.id.toolbar);
-        mtoolbar.setTitle("PureNote");
-        setSupportActionBar(mtoolbar);
+
         fab.setOnClickListener(this);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
