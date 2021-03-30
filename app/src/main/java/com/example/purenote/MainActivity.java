@@ -1,6 +1,7 @@
 package com.example.purenote;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Intent intent;
     private MyAdapter adapter;
     private Cursor cursor;
+    private Toolbar mtoolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void initView(){
         lv = findViewById(R.id.list);
         fab = findViewById(R.id.add);
+        mtoolbar = findViewById(R.id.toolbar);
+        mtoolbar.setTitle("PureNote");
+        setSupportActionBar(mtoolbar);
         fab.setOnClickListener(this);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

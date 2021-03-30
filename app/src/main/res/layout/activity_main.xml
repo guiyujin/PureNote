@@ -5,12 +5,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/list"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
-    </ListView>
+        android:background="@color/colorPrimary"
+        android:minHeight="?actionBarSize"
+        android:theme="?actionBarTheme"
+        />
+
+
+    <include layout="@layout/list"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add"
@@ -19,7 +24,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_margin="30dp"
-        app:fabSize="mini"
+        app:fabSize="normal"
         android:clickable="true"
         android:focusable="true"
         android:backgroundTint="@color/add"
