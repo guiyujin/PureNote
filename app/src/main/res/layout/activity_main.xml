@@ -33,7 +33,7 @@
         android:clickable="true"
         android:focusable="true"
         android:backgroundTint="@color/add"
-        android:src="@drawable/ic_baseline_add_48"
+        android:src="@drawable/ic_add"
         >
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
