@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">PureNote</string>
+    <string name="add_content">添加笔记</string>
     <string name="action_settings">设置</string>
     <string name="action_about">关于</string>
+    <string name="action_delete">删除</string>
 </resources>

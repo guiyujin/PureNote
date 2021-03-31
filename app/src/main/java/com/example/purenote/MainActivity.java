@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void initView(){
         lv = findViewById(R.id.list);
         fab = findViewById(R.id.add);
-        mtoolbar = findViewById(R.id.toolbar);
+        mtoolbar = findViewById(R.id.toolbar_main);
         setSupportActionBar(mtoolbar);
         //mtoolbar.setElevation(0);
         //getSupportActionBar().setDisplayShowTitleEnabled(false);

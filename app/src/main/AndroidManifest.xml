@@ -8,19 +8,18 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-
         >
         <activity
             android:name="com.example.purenote.DetailActivity"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/AppTheme.Main.NoActionBar"
             />
         <activity
             android:name="com.example.purenote.AddContent"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/AppTheme.Main.NoActionBar"
             />
         <activity
             android:name="com.example.purenote.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/AppTheme.Main.NoActionBar"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
