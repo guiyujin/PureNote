@@ -14,7 +14,7 @@
             android:theme="@style/AppTheme.Main.NoActionBar"
             />
         <activity
-            android:name="com.example.purenote.AddContent"
+            android:name="com.example.purenote.AddContentActivity"
             android:theme="@style/AppTheme.Main.NoActionBar"
             />
         <activity

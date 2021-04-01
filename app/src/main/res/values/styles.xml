@@ -13,6 +13,7 @@
         <item name="elevation">0dp</item>
         <item name="android:actionBarDivider">@null</item>
         <item name="android:windowContentOverlay">@null</item>
+        <item name="android:textAppearanceLargePopupMenu">@style/popmeuText</item>
         <item name="actionOverflowButtonStyle">@style/MainOverflowButtonStyle</item>
         <item name="actionOverflowMenuStyle">@style/MainOverflowMenuStyle</item>
     </style>
@@ -24,9 +25,14 @@
 
     <style name="MainOverflowMenuStyle" parent="Widget.AppCompat.PopupMenu.Overflow">
         <item name="overlapAnchor">false</item>  //不遮挡
+
         <item name="android:popupBackground">@drawable/fillet</item> //圆角
         <item name="android:dropDownVerticalOffset">15dp</item>
         <item name="android:dropDownHorizontalOffset">-15dp</item>  //右边距
+    </style>
+
+    <style name="popmeuText">
+        <item name="android:textSize">20sp</item>
     </style>
 
     <style name="AppTheme.Detail" parent="Theme.AppCompat.DayNight">
@@ -37,7 +43,9 @@
         <item name="elevation">0dp</item>
         <item name="android:actionBarDivider">@null</item>
         <item name="android:windowContentOverlay">@null</item>
+        <item name="android:textAppearanceLargePopupMenu">@style/popmeuText</item>
         <item name="actionOverflowButtonStyle">@style/DetailOverflowButtonStyle</item>
+        <item name="actionOverflowMenuStyle">@style/MainOverflowMenuStyle</item>
     </style>
 
     <style name="DetailOverflowButtonStyle" >

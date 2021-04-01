@@ -1,25 +1,36 @@
 package com.example.purenote;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.purenote.db.NotesDB;
+import com.example.purenote.utils.ThingsReminder;
 
 import java.lang.reflect.Method;
 
 public class DetailActivity extends AppCompatActivity{
     //private Button del,back;
-    private TextView tv;
+    private TextView textView;
     private NotesDB note;
     private SQLiteDatabase dbWriter;
     private Toolbar mtoolbar;
+    private Context context;
+    private String wordSizePrefs;
+    private int checkedItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +38,8 @@ public class DetailActivity extends AppCompatActivity{
         setContentView(R.layout.activity_detail);
         //del = findViewById(R.id.delete);
         //back = findViewById(R.id.back);
-        tv = findViewById(R.id.d_text);
-        tv.setMovementMethod(ScrollingMovementMethod.getInstance());
+        textView = findViewById(R.id.d_text);
+        textView.setMovementMethod(ScrollingMovementMethod.getInstance());
         mtoolbar = findViewById(R.id.toolbar_detail);
         setSupportActionBar(mtoolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -40,7 +51,7 @@ public class DetailActivity extends AppCompatActivity{
         });
         //back.setOnClickListener(this);
         //del.setOnClickListener(this);
-        tv.setText(getIntent().getStringExtra(NotesDB.CONTENT));
+        textView.setText(getIntent().getStringExtra(NotesDB.CONTENT));
         note = new NotesDB(this);
         dbWriter = note.getWritableDatabase();
     }
@@ -74,16 +85,60 @@ public class DetailActivity extends AppCompatActivity{
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         switch (id){
             case R.id.action_delete:
                 delete();
                 finish();
+                break;
+
+            case R.id.action_share:
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, textView.getText().toString().replaceAll("<img src='(.*?)'/>","[图片]").replaceAll("<voice src='(.*?)'/>","[语音]"));
+                startActivity(Intent.createChooser(intent, "分享到"));
+                break;
+
+            case R.id.action_add_alarm:
+                //Toast.makeText(DetailActivity.this,"开发中",Toast.LENGTH_SHORT).show();
+                ThingsReminder.OpenCalendar(this, note.TABLE_NAME.toString());
+                break;
+
+            case R.id.action_text_size:
+                final String[] wordSizes =  new String[]{"正常","大","超大"};
+                AlertDialog.Builder builder = new AlertDialog.Builder(DetailActivity.this);
+                AlertDialog alertDialog = builder.setTitle("选择字体大小")
+                        .setSingleChoiceItems(wordSizes, checkedItem, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                wordSizePrefs = wordSizes[i];
+                                float wordSize = getWordSize(wordSizePrefs);
+                                SharedPreferences prefs = getSharedPreferences("Setting",MODE_PRIVATE);
+                                SharedPreferences.Editor editor = prefs.edit();
+                                editor.putString("WordSize",wordSizePrefs);
+                                editor.apply();
+                                new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                           runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                //ScrollView scrollView = findViewById(R.id.scrollView);
+                                                //scrollView.setVisibility(View.VISIBLE);
+                                                textView.setTextSize(wordSize);
+                                                //((MainActivity) getActivity()).setTouchEventFlag(true);
+                                            }
+                                        });
+                                    }
+                                }).start();
+                            }
+                        }).create();
+                alertDialog.show();
+                break;
+            case R.id.action_box:
+                Toast.makeText(DetailActivity.this,"开发中",Toast.LENGTH_SHORT).show();
+
                 break;
             default:
         }
@@ -104,5 +159,20 @@ public class DetailActivity extends AppCompatActivity{
             }
         }
         return super.onMenuOpened(featureId, menu);
+    }
+
+    private float getWordSize(String str){
+        switch (str) {
+            case "正常":
+                checkedItem = 0;
+                return 20;
+            case "大":
+                checkedItem = 1;
+                return 25;
+            case "超大":
+                checkedItem = 2;
+                return 30;
+        }
+        return 20;
     }
 }

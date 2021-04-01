@@ -1,4 +1,4 @@
-package com.example.purenote;
+package com.example.purenote.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

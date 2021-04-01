@@ -12,7 +12,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.example.purenote.adapter.MyAdapter;
+import com.example.purenote.db.NotesDB;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.lang.reflect.Method;
@@ -42,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fab = findViewById(R.id.add);
         mtoolbar = findViewById(R.id.toolbar_main);
         setSupportActionBar(mtoolbar);
+
         //mtoolbar.setElevation(0);
         //getSupportActionBar().setDisplayShowTitleEnabled(false);
         fab.setOnClickListener(this);
@@ -60,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        intent = new Intent(this, AddContent.class);
+        intent = new Intent(this, AddContentActivity.class);
         switch (view.getId()){
             case R.id.add:
                 startActivity(intent);
@@ -97,8 +101,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id){
+            case R.id.action_settings:
+                Toast.makeText(MainActivity.this,"开发中",Toast.LENGTH_SHORT).show();
+
+                break;
+            case R.id.action_about:
+                Toast.makeText(MainActivity.this,"开发中",Toast.LENGTH_SHORT).show();
+
+                break;
+            default:
         }
         return super.onOptionsItemSelected(item);
     }

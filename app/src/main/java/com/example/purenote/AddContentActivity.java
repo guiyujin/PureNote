@@ -9,12 +9,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;;
+import com.example.purenote.db.NotesDB;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class AddContent extends AppCompatActivity {
+public class AddContentActivity extends AppCompatActivity {
    // private Button save,del;
     private EditText et_text;
     private NotesDB notesDB;
