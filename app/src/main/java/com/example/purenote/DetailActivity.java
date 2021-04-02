@@ -8,12 +8,22 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.method.ScrollingMovementMethod;
+import android.text.style.AbsoluteSizeSpan;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.TextAppearanceSpan;
+import android.text.style.TypefaceSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,13 +34,14 @@ import java.lang.reflect.Method;
 
 public class DetailActivity extends AppCompatActivity{
     //private Button del,back;
-    private TextView textView;
+    private EditText editText;
     private NotesDB note;
     private SQLiteDatabase dbWriter;
     private Toolbar mtoolbar;
     private Context context;
     private String wordSizePrefs;
     private int checkedItem;
+    private byte[] bytes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +49,7 @@ public class DetailActivity extends AppCompatActivity{
         setContentView(R.layout.activity_detail);
         //del = findViewById(R.id.delete);
         //back = findViewById(R.id.back);
-        textView = findViewById(R.id.d_text);
-        textView.setMovementMethod(ScrollingMovementMethod.getInstance());
+        editText = findViewById(R.id.d_text);
         mtoolbar = findViewById(R.id.toolbar_detail);
         setSupportActionBar(mtoolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -51,7 +61,8 @@ public class DetailActivity extends AppCompatActivity{
         });
         //back.setOnClickListener(this);
         //del.setOnClickListener(this);
-        textView.setText(getIntent().getStringExtra(NotesDB.CONTENT));
+        editText.setText(getIntent().getStringExtra(NotesDB.CONTENT));
+        //textView.setText(getIntent().getStringExtra(NotesDB.CONTENT));
         note = new NotesDB(this);
         dbWriter = note.getWritableDatabase();
     }
@@ -96,7 +107,7 @@ public class DetailActivity extends AppCompatActivity{
             case R.id.action_share:
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
-                intent.putExtra(Intent.EXTRA_TEXT, textView.getText().toString().replaceAll("<img src='(.*?)'/>","[图片]").replaceAll("<voice src='(.*?)'/>","[语音]"));
+                intent.putExtra(Intent.EXTRA_TEXT, editText.getText().toString().replaceAll("<img src='(.*?)'/>","[图片]").replaceAll("<voice src='(.*?)'/>","[语音]"));
                 startActivity(Intent.createChooser(intent, "分享到"));
                 break;
 
@@ -121,12 +132,19 @@ public class DetailActivity extends AppCompatActivity{
                                 new Thread(new Runnable() {
                                     @Override
                                     public void run() {
+                                        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(editText.getText());
                                            runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
                                                 //ScrollView scrollView = findViewById(R.id.scrollView);
                                                 //scrollView.setVisibility(View.VISIBLE);
-                                                textView.setTextSize(wordSize);
+                                                if (bytes == null) {
+                                                    spannableStringBuilder.setSpan(new TypefaceSpan("serif"),0,spannableStringBuilder.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+                                                    //设置字体前景色
+                                                    spannableStringBuilder.setSpan(new ForegroundColorSpan(Color.BLACK), 0, spannableStringBuilder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                                                }
+                                                editText.setText(spannableStringBuilder);
+                                                editText.setTextSize(wordSize);
                                                 //((MainActivity) getActivity()).setTouchEventFlag(true);
                                             }
                                         });
@@ -144,6 +162,7 @@ public class DetailActivity extends AppCompatActivity{
         }
         return super.onOptionsItemSelected(item);
     }
+
 
     @Override
     public boolean onMenuOpened(int featureId, Menu menu) {

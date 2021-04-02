@@ -21,10 +21,11 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <TextView
+    <EditText
         android:id="@+id/d_text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="top"
         android:scrollbars="vertical"
         android:layout_weight="1"/>
 
