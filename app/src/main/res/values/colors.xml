@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FFCC66</color>
-    <color name="colorPrimaryDark">#FFFFCC</color>
+    <color name="colorPrimary">#FFCC00</color>
+    <color name="colorPrimaryDark">#FFCC00</color>
     <color name="colorAccent">#D81B60</color>
 
-    <color name="time_set">#00CCFF</color>
+    <color name="set">#00CCFF</color>
 
     <color name="add">#FFCC00</color>
+    <color name="MiAdd">#FDC200</color>
     <color name="text">#FFFFcc</color>
     <color name="btn">#99CCFF</color>
 
@@ -17,6 +18,10 @@
     <color name="teal_700">#FF018786</color>
 
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FFFFFF</color>
     <color name="gray">#99999999</color>
+
+    <color name="MicolorPrimary">#F7F7F7</color>
+    <color name="MicolorPrimaryDark">#F7F7F7</color>
+    <color name="Misearch">#969696</color>
 </resources>

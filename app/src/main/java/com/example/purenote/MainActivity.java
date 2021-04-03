@@ -1,6 +1,7 @@
 package com.example.purenote;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private MyAdapter adapter;
     private Cursor cursor;
     private Toolbar mtoolbar;
+    private SearchView mSearchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +47,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fab = findViewById(R.id.add);
         mtoolbar = findViewById(R.id.toolbar_main);
         setSupportActionBar(mtoolbar);
+        mSearchView = findViewById(R.id.search_view);
+        mSearchView.setQueryHint("Search");
+        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
 
-        //mtoolbar.setElevation(0);
-        //getSupportActionBar().setDisplayShowTitleEnabled(false);
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+
+
+        });
+
         fab.setOnClickListener(this);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

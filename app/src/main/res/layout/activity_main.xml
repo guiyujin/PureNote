@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:clipToPadding="true"
     android:fitsSystemWindows="true"
+    android:background="@color/MicolorPrimary"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
@@ -21,7 +22,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/list"/>
+    <include layout="@layout/main_container" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add"
@@ -32,7 +33,7 @@
         app:fabSize="normal"
         android:clickable="true"
         android:focusable="true"
-        android:backgroundTint="@color/add"
+        android:backgroundTint="@color/MiAdd"
         android:src="@drawable/ic_add"
         >
 
