@@ -103,13 +103,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //noinspection SimplifiableIfStatement
         switch (id){
             case R.id.action_settings:
-                Toast.makeText(MainActivity.this,"开发中",Toast.LENGTH_SHORT).show();
-
+                Intent intent = new Intent(MainActivity.this,SettingsActivity.class);
+                startActivity(intent);
                 break;
-            case R.id.action_about:
-                Toast.makeText(MainActivity.this,"开发中",Toast.LENGTH_SHORT).show();
-
-                break;
+//            case R.id.action_about:
+//                Toast.makeText(MainActivity.this,"开发中",Toast.LENGTH_SHORT).show();
+//
+//                break;
             default:
         }
         return super.onOptionsItemSelected(item);
