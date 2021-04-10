@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:showIn="@layout/activity_main"
@@ -9,11 +9,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.appcompat.widget.SearchView
+    <androidx.appcompat.widget.SearchView
             android:id="@+id/search_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,9 +20,8 @@
             android:queryHint="请输入搜索内容" >
         </androidx.appcompat.widget.SearchView>
 
-        <ListView
+    <ListView
             android:id="@+id/list"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:dividerHeight="0dp"
             android:divider="@color/white"
             android:layout_below="@id/search_view"
@@ -34,6 +29,4 @@
             android:layout_height="wrap_content">
         </ListView>
 
-    </RelativeLayout>
-
-</LinearLayout>
+</RelativeLayout>

@@ -16,7 +16,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class AddContentActivity extends AppCompatActivity {
-   // private Button save,del;
     private EditText et_text;
     private NotesDB notesDB;
     private SQLiteDatabase dbWriter;
@@ -27,8 +26,6 @@ public class AddContentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_content);
 
-        //save = findViewById(R.id.save);
-        //del = findViewById(R.id.cancel);
         et_text = findViewById(R.id.et_text);
         mtoolbar = findViewById(R.id.toolbar_add);
         setSupportActionBar(mtoolbar);
@@ -39,9 +36,6 @@ public class AddContentActivity extends AppCompatActivity {
                 finish();
             }
         });
-        //getSupportActionBar().setDisplayShowTitleEnabled(false);
-        //save.setOnClickListener(this);
-        //del.setOnClickListener(this);
         notesDB = new NotesDB(this);
         dbWriter = notesDB.getWritableDatabase();
     }
