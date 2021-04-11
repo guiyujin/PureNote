@@ -11,4 +11,4 @@
   ![](https://guiyujin.com/usr/uploads/2021/04/169054087.jpg)
   
   ### 设置界面
-  ![](https://guiyujin.com/usr/uploads/2021/04/3466492365.jpg)
+  ![](https://guiyujin.com/usr/uploads/2021/04/1787346204.png)
