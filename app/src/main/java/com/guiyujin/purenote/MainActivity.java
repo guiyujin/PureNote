@@ -1,4 +1,4 @@
-package com.example.purenote;
+package com.guiyujin.purenote;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -13,10 +13,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.example.purenote.adapter.MyAdapter;
-import com.example.purenote.db.NotesDB;
+import com.guiyujin.purenote.adapter.MyAdapter;
+import com.guiyujin.purenote.db.DBUtils;
+import com.guiyujin.purenote.db.NotesDB;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.lang.reflect.Method;
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void selectDB(){
+    public void showItem(){
         cursor = dbReader.query(NotesDB.TABLE_NAME, null, null, null,
                 null, null ,null);
         adapter = new MyAdapter(this, cursor);
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onResume() {
         super.onResume();
-        selectDB();
+        showItem();
     }
 
     @Override

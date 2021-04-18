@@ -1,34 +1,29 @@
-package com.example.purenote;
+package com.guiyujin.purenote;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
-import android.text.method.ScrollingMovementMethod;
-import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
-import android.text.style.TextAppearanceSpan;
 import android.text.style.TypefaceSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.purenote.db.NotesDB;
-import com.example.purenote.utils.ThingsReminder;
+import com.guiyujin.purenote.db.DBUtils;
+import com.guiyujin.purenote.db.NotesDB;
+import com.guiyujin.purenote.utils.ThingsReminder;
 
 import java.lang.reflect.Method;
 
@@ -38,15 +33,17 @@ public class DetailActivity extends AppCompatActivity{
     private NotesDB note;
     private SQLiteDatabase dbWriter;
     private Toolbar mtoolbar;
-    private Context context;
     private String wordSizePrefs;
     private int checkedItem;
     private byte[] bytes;
+    private DBUtils dbUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        dbUtils = new DBUtils(this);
         //del = findViewById(R.id.delete);
         //back = findViewById(R.id.back);
         editText = findViewById(R.id.d_text);
@@ -56,6 +53,7 @@ public class DetailActivity extends AppCompatActivity{
         mtoolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 finish();
             }
         });
@@ -100,7 +98,9 @@ public class DetailActivity extends AppCompatActivity{
 
         switch (id){
             case R.id.action_delete:
-                delete();
+                Intent intents = getIntent();
+                dbUtils.delete(intents);
+                //delete();
                 finish();
                 break;
 

@@ -1,4 +1,4 @@
-package com.example.purenote;
+package com.guiyujin.purenote;
 
 import androidx.appcompat.app.AppCompatActivity;
 

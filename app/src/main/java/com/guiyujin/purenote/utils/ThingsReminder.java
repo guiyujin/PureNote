@@ -1,4 +1,4 @@
-package com.example.purenote.utils;
+package com.guiyujin.purenote.utils;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,12 +16,6 @@ public class ThingsReminder {
     }
 
     public static void OpenCalendar(Context context, String content) {
-//        Calendar beginTime = Calendar.getInstance();//开始时间
-//        beginTime.clear();
-//        beginTime.set(2021,0,1,12,0); //2014年1月1日12点0分(注意：月份0-11，24小时制)
-//        Calendar endTime = Calendar.getInstance();//结束时间
-//        endTime.clear();
-//        endTime.set(2021,1,1,13,30); //2014年2月1日13点30分(注意：月份0-11，24小时制)
         Intent intent = new Intent(Intent.ACTION_INSERT)
                 .setData(Uri.parse(calenderEventURL))
                 .putExtra("beginTime", System.currentTimeMillis())

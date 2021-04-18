@@ -1,4 +1,4 @@
-package com.example.purenote.adapter;
+package com.guiyujin.purenote.adapter;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.purenote.R;
+import com.guiyujin.purenote.R;
 
 public class MyAdapter extends BaseAdapter {
     private Context context;
