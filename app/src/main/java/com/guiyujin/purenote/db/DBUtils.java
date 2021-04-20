@@ -47,6 +47,8 @@ public class DBUtils {
         ContentValues contentValues = new ContentValues();
         contentValues.put(NotesDB.CONTENT,content);
         contentValues.put(NotesDB.TIME,getTime());
+        Log.i("RESSSS",content);
+        Log.i("RESSSS",id+"");
         dbWriter.update(NotesDB.TABLE_NAME,contentValues,NotesDB.ID+"=?", new String[]{String.valueOf(id)});
         dbWriter.close();
     }

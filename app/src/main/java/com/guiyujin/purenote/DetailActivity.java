@@ -38,7 +38,7 @@ public class DetailActivity extends AppCompatActivity{
     private int checkedItem;
     private byte[] bytes;
     private DBUtils dbUtils;
-    private int id;
+    private int _id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,13 +50,13 @@ public class DetailActivity extends AppCompatActivity{
         editText = findViewById(R.id.d_text);
         mtoolbar = findViewById(R.id.toolbar_detail);
         editText.setText(getIntent().getStringExtra(NotesDB.CONTENT));
-        id = getIntent().getIntExtra(NotesDB.ID,0);
+        _id = getIntent().getIntExtra(NotesDB.ID,0);
         setSupportActionBar(mtoolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mtoolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dbUtils.update(editText.getText().toString(),id);
+                //dbUtils.update(editText.getText().toString(),_id);
                 finish();
             }
         });
@@ -94,6 +94,10 @@ public class DetailActivity extends AppCompatActivity{
         int id = item.getItemId();
 
         switch (id){
+            case R.id.action_save:
+                dbUtils.update(editText.getText().toString(),_id);
+                finish();
+                break;
             case R.id.action_delete:
                 Intent intents = getIntent();
                 dbUtils.delete(intents);
