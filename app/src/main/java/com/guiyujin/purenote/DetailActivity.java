@@ -15,6 +15,7 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.TypefaceSpan;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,6 +38,7 @@ public class DetailActivity extends AppCompatActivity{
     private int checkedItem;
     private byte[] bytes;
     private DBUtils dbUtils;
+    private int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,23 +46,21 @@ public class DetailActivity extends AppCompatActivity{
         setContentView(R.layout.activity_detail);
 
         dbUtils = new DBUtils(this);
-        //del = findViewById(R.id.delete);
-        //back = findViewById(R.id.back);
+
         editText = findViewById(R.id.d_text);
         mtoolbar = findViewById(R.id.toolbar_detail);
+        editText.setText(getIntent().getStringExtra(NotesDB.CONTENT));
+        id = getIntent().getIntExtra(NotesDB.ID,0);
         setSupportActionBar(mtoolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mtoolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                dbUtils.update(editText.getText().toString(),id);
                 finish();
             }
         });
-        //back.setOnClickListener(this);
-        //del.setOnClickListener(this);
-        editText.setText(getIntent().getStringExtra(NotesDB.CONTENT));
-        //textView.setText(getIntent().getStringExtra(NotesDB.CONTENT));
+
         note = new NotesDB(this);
         dbWriter = note.getWritableDatabase();
     }
@@ -81,9 +81,6 @@ public class DetailActivity extends AppCompatActivity{
     }
     */
 
-    public void delete(){
-        dbWriter.delete(NotesDB.TABLE_NAME,"_id=" + getIntent().getIntExtra(NotesDB.ID,0),null);
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
