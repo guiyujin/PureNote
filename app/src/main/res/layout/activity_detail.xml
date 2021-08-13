@@ -22,11 +22,16 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <EditText
+
         android:id="@+id/d_text"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:gravity="top"
         android:scrollbars="vertical"
+        android:background="@null"
+        android:textCursorDrawable="@drawable/et_cursor"
         android:layout_weight="1"/>
 
 </LinearLayout>

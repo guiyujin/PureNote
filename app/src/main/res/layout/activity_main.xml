@@ -2,9 +2,10 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:clipToPadding="true"
     android:fitsSystemWindows="true"
-    android:background="@color/MicolorPrimary"
+    tools:context=".MainActivity"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
@@ -28,8 +29,9 @@
         android:id="@+id/add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
+        android:layout_gravity="bottom|right"
         android:layout_marginBottom="30dp"
+        android:layout_marginEnd="30dp"
         android:backgroundTint="@color/MiAdd"
         android:focusable="true"
         android:src="@drawable/ic_add"

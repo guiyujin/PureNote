@@ -39,8 +39,8 @@
     </style>
 
     <style name="AddOverflowButtonStyle" >
-        <item name="android:src">@drawable/ic_confirm</item> //设置overflow图标
-        <item name="android:paddingEnd">50dp</item>  //overflow图标右边距
+        <item name="android:src">@drawable/ic_box</item> //设置overflow图标
+        <item name="android:paddingEnd">10dp</item>  //overflow图标右边距
     </style>
 
     <style name="MainToolbarPopupTheme" parent="Widget.AppCompat.PopupMenu.Overflow">

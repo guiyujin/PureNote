@@ -14,7 +14,6 @@ import com.guiyujin.purenote.R;
 public class MyAdapter extends BaseAdapter {
     private Context context;
     private Cursor cursor;
-    private LinearLayout linearLayout;
 
     public MyAdapter(Context context, Cursor cursor) {
         this.context = context;
@@ -39,14 +38,14 @@ public class MyAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        linearLayout = (LinearLayout) inflater.inflate(R.layout.note_item, null);
-        TextView contenttv = linearLayout.findViewById(R.id.list_content);
-        TextView timetv = linearLayout.findViewById(R.id.list_time);
+        view =  inflater.inflate(R.layout.note_item, null);
+        TextView contenttv = view.findViewById(R.id.list_content);
+        TextView timetv = view.findViewById(R.id.list_time);
         cursor.moveToPosition(i);
         String content = cursor.getString(cursor.getColumnIndex("content"));
         String time = cursor.getString(cursor.getColumnIndex("time"));
         contenttv.setText(content);
         timetv.setText(time);
-        return linearLayout;
+        return view;
     }
 }
